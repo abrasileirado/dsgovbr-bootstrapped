@@ -53,3 +53,14 @@
 [data-bs-theme="dark"] .input-group-text {
   color: var(--#{$prefix}body-color);
 }
+
+// Navbar dentro de uma página em modo escuro (issue #94). O Bootstrap só troca as
+// cores do navbar quando o próprio .navbar tem data-bs-theme="dark"; com o modo no
+// <html>, os links ficavam no azul do modo claro, sem contraste no fundo escuro.
+// Um navbar marcado como claro continua claro.
+[data-bs-theme="dark"] .navbar:not([data-bs-theme="light"]) {
+  --#{$prefix}navbar-color: #{$navbar-dark-color};
+  --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
+  --#{$prefix}navbar-active-color: #{$navbar-dark-active-color};
+  --#{$prefix}navbar-disabled-color: #{$navbar-dark-disabled-color};
+}

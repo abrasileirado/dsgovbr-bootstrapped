@@ -16,6 +16,13 @@ $light: $govbr-gray-5 !default;
 $dark: $govbr-gray-90 !default;
 
 $body-color: $govbr-gray-80 !default;
+
+// Texto padrão que acompanha o modo claro/escuro (issue #94). As regras abaixo
+// usavam $govbr-gray-80 (#333) fixo, que some no fundo escuro. No modo claro o
+// resultado é o mesmo: --bs-body-color vale $body-color. O $prefix é o mesmo
+// padrão do Bootstrap, declarado aqui porque as settings vêm antes dele.
+$prefix: bs- !default;
+$govbr-text-color: var(--#{$prefix}body-color) !default;
 $body-bg: $govbr-background !default;
 $border-color: $govbr-gray-20 !default;
 
@@ -110,7 +117,7 @@ $pagination-margin-start: 0 !default;
 // mesmas do botão (issue #3); por isso reaproveitamos o mesmo padding-y
 // calibrado ali, e o resultado é coerente (o próprio GOV.BR DS usa a mesma
 // escala de altura para os dois componentes).
-$input-color: $govbr-gray-80 !default;             // --color-light
+$input-color: $govbr-text-color !default;          // --color-light / --color-dark
 $input-border-color: $govbr-gray-40 !default;      // --border-color-alternative
 $input-font-weight: $govbr-font-weight-medium !default;
 
@@ -204,7 +211,7 @@ $accordion-icon-active-color: $govbr-interactive !default;
 $breadcrumb-font-size: $govbr-font-size-down-01 !default;
 $breadcrumb-divider: quote("\203A") !default;
 $breadcrumb-divider-color: $govbr-gray-40 !default;
-$breadcrumb-active-color: $govbr-gray-80 !default;
+$breadcrumb-active-color: $govbr-text-color !default;
 $breadcrumb-item-padding-x: 8px !default;      // spacing-scale-base
 
 // Botão de fechar (GOV.BR DS: Button circular, ícone interativo, 40px).
@@ -225,8 +232,8 @@ $list-group-item-padding-x: 16px !default;     // --item-padding-x
 $list-group-active-bg: $govbr-selected !default;
 $list-group-active-border-color: $govbr-selected !default;
 $list-group-hover-bg: transparent !default;
-$list-group-action-color: $govbr-gray-80 !default;
-$list-group-action-hover-color: $govbr-gray-80 !default;
+$list-group-action-color: $govbr-text-color !default;
+$list-group-action-hover-color: $govbr-text-color !default;
 $list-group-action-active-bg: transparent !default;
 
 // Dropdown (GOV.BR DS: dropdown + List) — sem borda, sombra, itens de 8px.
@@ -236,7 +243,7 @@ $dropdown-box-shadow: $govbr-shadow-sm !default;
 $dropdown-padding-y: 0 !default;
 $dropdown-item-padding-y: 8px !default;
 $dropdown-item-padding-x: 16px !default;
-$dropdown-link-color: $govbr-gray-80 !default;
+$dropdown-link-color: $govbr-text-color !default;
 $dropdown-link-hover-bg: transparent !default;
 $dropdown-link-active-bg: $govbr-selected !default;
 $dropdown-divider-bg: $govbr-gray-20 !default;
@@ -336,8 +343,8 @@ $navbar-light-active-color: $govbr-active !default;
 $navbar-light-disabled-color: $govbr-gray-40 !default;
 $navbar-light-icon-color: $govbr-interactive !default;
 $navbar-light-toggler-border-color: transparent !default;
-$navbar-light-brand-color: $govbr-gray-80 !default;
-$navbar-light-brand-hover-color: $govbr-gray-80 !default;
+$navbar-light-brand-color: $govbr-text-color !default;
+$navbar-light-brand-hover-color: $govbr-text-color !default;
 $navbar-dark-color: $govbr-interactive-dark !default;
 $navbar-dark-hover-color: $govbr-interactive-dark !default;
 $navbar-dark-active-color: $govbr-color-dark !default;

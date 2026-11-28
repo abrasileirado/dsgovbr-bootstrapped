@@ -239,6 +239,8 @@ no Pages) num Chromium real, em ``tests/browser/``:
   (``src/js/dsgovbr-bootstrapped-cookies.js``): barra, modal de configurações, botão
   flutuante, evento, ``localStorage`` e axe (claro e escuro, modal aberto).
 - ``modo.spec.js``: seletor de modo claro/escuro.
+- ``modo-escuro.spec.js``: cor do texto e contraste (axe) no modo escuro de header,
+  campo, select, abas, list group, dropdown e breadcrumb (issue #94).
 - ``a11y.spec.js``: axe-core (WCAG 2 A/AA) nas páginas de componentes e no exemplo
   de login — RNF-02. Violação nova faz o teste falhar.
 - ``visual.spec.js``: captura de tela de cada página em desktop (1280px) e mobile
