@@ -76,7 +76,7 @@ test("campo de texto: raio 4px, borda cinza, padding e peso do GOV.BR DS", () =>
   assert.equal(decl(input, "border-radius"), "4px");
   assert.equal(decl(input, "padding"), "0.5rem 1rem");
   assert.equal(decl(input, "font-weight"), "500");
-  assert.equal(decl(input, "color"), "#333");
+  assert.equal(decl(input, "color"), "var(--bs-body-color)"); // #333 no modo claro (issue #94)
   assert.equal(decl(input, "border"), "var(--bs-border-width) solid #888");
 });
 
@@ -168,4 +168,26 @@ test("paginação: links circulares, espaçados, ativo azul e foco dourado", () 
   assert.equal(decl(focus, "outline"), "4px dashed #c2850c");
   assert.equal(decl(focus, "outline-offset"), "4px");
   assert.equal(decl(block(css, ".page-item.disabled .page-link, .page-link:disabled, .page-link[aria-disabled=true]"), "pointer-events"), "none");
+});
+
+test("modo escuro (#94): textos acompanham --bs-body-color, sem #333 fixo", () => {
+  const texto = "var(--bs-body-color)";
+  assert.equal(decl(block(css, ".form-control"), "color"), texto);
+  assert.equal(decl(block(css, ".form-control:focus"), "color"), texto);
+  assert.equal(decl(block(css, ".form-select"), "color"), texto);
+  assert.equal(decl(block(css, ".navbar"), "--bs-navbar-brand-color"), texto);
+  assert.equal(decl(block(css, ".navbar"), "--bs-navbar-brand-hover-color"), texto);
+  assert.equal(decl(block(css, ".dropdown-menu"), "--bs-dropdown-link-color"), texto);
+  assert.equal(decl(block(css, ".breadcrumb"), "--bs-breadcrumb-item-active-color"), texto);
+  assert.equal(decl(block(css, ".list-group"), "--bs-list-group-action-color"), texto);
+  assert.equal(decl(block(css, ".list-group-item-action"), "color"), texto);
+  assert.equal(decl(block(css, ".nav-tabs .nav-link,\n.nav-underline .nav-link"), "color"), texto);
+  // No modo claro o resultado é o mesmo de antes.
+  assert.equal(decl(block(css, ":root, [data-bs-theme=light]"), "--bs-body-color"), "#333");
+});
+
+test("modo escuro (#94): navbar herda as cores escuras quando o modo está no <html>", () => {
+  const nav = block(css, '[data-bs-theme=dark] .navbar:not([data-bs-theme=light])');
+  assert.equal(decl(nav, "--bs-navbar-color"), "#c5d4eb");
+  assert.equal(decl(nav, "--bs-navbar-active-color"), "#fff");
 });

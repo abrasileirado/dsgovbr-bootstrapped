@@ -7,7 +7,7 @@
 }
 
 .list-group-item-action {
-  color: $govbr-gray-80;
+  color: $govbr-text-color;
 
   &:hover:not(.active):not(:disabled):not(.disabled) {
     @include govbr-hover;

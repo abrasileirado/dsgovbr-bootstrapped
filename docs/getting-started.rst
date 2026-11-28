@@ -90,6 +90,12 @@ botão com ``data-dsgovbr-modo``:
 
 Exemplo no header do `painel administrativo <exemplos/admin.html>`__.
 
+O texto padrão dos campos, do select, do título do navbar, dos itens de dropdown, do
+breadcrumb ativo, do list group de ação e das abas segue ``--bs-body-color`` (``#333``
+no claro, ``--color-dark`` no escuro). Um ``.navbar`` dentro de uma página escura usa as
+cores escuras mesmo sem ``data-bs-theme`` próprio; marque-o com ``data-bs-theme="light"``
+para mantê-lo claro. O toast continua com fundo e texto claros nos dois modos.
+
 Web components de header, menu, footer e breadcrumb (opcional)
 ---------------------------------------------------------------
 
